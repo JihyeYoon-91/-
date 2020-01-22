@@ -18,6 +18,41 @@ public class SnsuserDao {
 		}
 		return dao;
 	};
+	public SnsuserDto getData(String id) {
+		SnsuserDto dto=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "SELECT *"
+					+ " FROM snsuser"
+					+ "	WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			// ? 에 값 바인딩 
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				dto.setProfile(rs.getString("profile"));
+				dto.setEmail(rs.getString("email"));
+				dto.setRegdate(rs.getString("regdate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				//connection pool 에 반납하기 
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return dto;
+	}
 	//인자로 전달되는 UsersDto 에 담긴 정보가 유효한 정보인지 여부를 리턴해주는 메소드
 	public boolean isValid(SnsuserDto dto) {
 		boolean isValid=false;
@@ -92,7 +127,8 @@ public class SnsuserDao {
 		ResultSet rs = null;
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "SELECT * FROM snsuser";
+			String sql = "SELECT * FROM snsuser"
+					+ " ORDER BY id ASC";
 			pstmt = conn.prepareStatement(sql);
 			// ? 에 값 바인딩 
 
