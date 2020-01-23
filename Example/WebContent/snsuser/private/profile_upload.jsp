@@ -65,6 +65,12 @@
 					item.write(storeFile);
 					//이미지가 업로된 경로를 구성한다.
 					savedPath="/upload/"+saveFileName;
+					//DB 에 저장한다.
+					String id=(String)session.getAttribute("id");
+					SnsuserDto dto=new SnsuserDto();
+					dto.setId(id);
+					dto.setProfile(savedPath);
+					SnsuserDao.getInstance().updateProfile(dto);
 				}
 			}//for
 			

@@ -2,6 +2,7 @@ CREATE TABLE snsuser
 (id VARCHAR2(50) PRIMARY KEY,
 pwd VARCHAR2(50),
 email VARCHAR2(50),
+profile CLOB,
 regdate DATE);
 
 CREATE TABLE board_img(

@@ -48,6 +48,9 @@
 							<c:when test="${empty tmp.profile}">
 								<img src="${pageContext.request.contextPath }/resources/images/default_user.jpeg"/>
 							</c:when>
+							<c:otherwise>
+								<img src="${pageContext.request.contextPath }${tmp.profile}"/>
+							</c:otherwise>
 						</c:choose>
 					</a>
 				</td>

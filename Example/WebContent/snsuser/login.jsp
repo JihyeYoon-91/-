@@ -62,7 +62,7 @@
 		<c:when test="${isValid}">
 			<p>
 				<strong>${id}</strong> 회원님 로그인 되었습니다.
-				<a href="${pageContext.request.contextPath}/snsuser/private/mysns.jsp">확인</a>
+				<a href="${pageContext.request.contextPath}/snsuser/private/mysns.jsp ">확인</a>
 			</p>		
 		</c:when>
 		<c:otherwise>

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-<h1>sns입니다.회원가입 후 사용가능합니다.</h1>
+<h1>모두의 sns입니다.로그인 후 사용가능합니다.</h1>
 <a href="${pageContext.request.contextPath}/snsuser/signupForm.jsp">회원 가입하러 가기</a>
 <a href="${pageContext.request.contextPath}/snsuser/loginForm.jsp">로그인 하러가기</a>
 

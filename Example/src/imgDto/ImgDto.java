@@ -17,7 +17,7 @@ public class ImgDto {
 	public String getWriter() {
 		return writer;
 	}
-	public void setWriter(String wrter) {
+	public void setWriter(String writer) {
 		this.writer = writer;
 	}
 	public String getContent() {

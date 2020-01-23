@@ -33,6 +33,7 @@ public class SnsuserDao {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
+				dto=new SnsuserDto();
 				dto.setProfile(rs.getString("profile"));
 				dto.setEmail(rs.getString("email"));
 				dto.setRegdate(rs.getString("regdate"));
@@ -89,19 +90,19 @@ public class SnsuserDao {
 		return isValid;
 	}
 		
-	public boolean setProfile(String id,String profile) {
+	public boolean updateProfile(SnsuserDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int flag = 0;
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "UPDATE users"
+			String sql = "UPDATE snsuser"
 					+ " SET profile=?"
 					+ " WHERE id=?";
 			pstmt = conn.prepareStatement(sql);
 			// ? 에 값 바인딩 하기
-			pstmt.setString(1, id);
-			pstmt.setString(2, profile);
+			pstmt.setString(1, dto.getProfile());
+			pstmt.setString(2, dto.getId());
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -162,8 +163,8 @@ public class SnsuserDao {
 		try {
 			conn = new DbcpBean().getConn();
 			String sql = "INSERT INTO snsuser"
-					+ "	(id,pwd,email,regdate)"
-					+ " VALUES(?,?,?,SYSDATE)";
+					+ "	(id,pwd,email,regdate,profile)"
+					+ " VALUES(?,?,?,SYSDATE,null)";
 			pstmt = conn.prepareStatement(sql);
 			// ? 에 값 바인딩 하기
 			pstmt.setString(1, id);

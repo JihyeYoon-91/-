@@ -10,7 +10,6 @@
 	boolean isSuccess=SnsuserDao.getInstance().insert(id,email,pwd);
 	session.setAttribute("isSuccess", isSuccess);
 	session.setAttribute("id", id);
-	
 %>
 <!DOCTYPE html>
 <html>

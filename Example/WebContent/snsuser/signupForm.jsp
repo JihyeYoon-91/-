@@ -23,6 +23,7 @@
 <div class="container">
 <h1>회원 가입 폼 입니다.</h1>
 	<form action="signup.jsp" method="post">
+	<input type="hidden" name="profile" id="profile" value="" ><br />
 	<label for="id">아이디</label>
 	<input type="text" name="id" id="id" ><br />
 	<label for="pwd">비밀번호</label>
